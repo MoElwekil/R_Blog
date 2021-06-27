@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 
 import {postsList} from '../actions'
+import PostAuthor from './PostAuthor';
 
 class PostsList extends Component {
 
@@ -15,6 +16,7 @@ class PostsList extends Component {
                 <li key={post.id} className="list-group-item">
                     <h2>{post.title}</h2>
                     <p>{post.body}</p>
+                    <div><PostAuthor authorId={post.userId} /></div>
                 </li>
             )
         })
