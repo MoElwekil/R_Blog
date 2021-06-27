@@ -10,6 +10,10 @@ class PostAuthor extends Component {
     render(){
         const user = this.props.users.find(user => user.id === this.props.authorId);
 
+        if(!user){
+            return <div>loading..</div>
+        }
+
         return (
             <div>{user.name}</div>
         )
