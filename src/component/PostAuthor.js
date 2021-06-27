@@ -4,11 +4,8 @@ import {connect} from 'react-redux'
 import {authorDetails} from '../actions'
 
 class PostAuthor extends Component {
-    componentDidMount(){
-        this.props.authorDetails(this.props.authorId)
-    }
     render(){
-        const user = this.props.users.find(user => user.id === this.props.authorId);
+        const {user} = this.props;
 
         if(!user){
             return <div>loading..</div>
@@ -20,8 +17,8 @@ class PostAuthor extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {users: state.users};
+const mapStateToProps = (state, ownProps) => {
+    return {user: state.users.find(user => user.id === ownProps.authorId)};
 }
 
 export default connect(mapStateToProps, {authorDetails})(PostAuthor)
